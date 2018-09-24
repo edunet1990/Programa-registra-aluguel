@@ -150,30 +150,15 @@ namespace RegistraQuartos
 
         public void ExcluirReserva(int reservaASerExcluida)
         {
-            int iq = 1;
-            for (int i = 0; i < ContaRegistros; i++)
+            if (ContaRegistros > 0) //fiz esse if para caso só ahaja apenas um elemento no array (0), para que não deixe o valor negativo
             {
-
-
-
-                Console.WriteLine("Dados da " + iq + "° reserva");
-                Console.WriteLine("Quarto: " + this.QuartosEscolhidosArray[i]);
-                Console.WriteLine("Nome: " + this.Nome[i]);
-                Console.WriteLine("Email: " + this.Email[i]);
-
-                Console.WriteLine("");
-
-                ++iq;
+                ContaRegistros -= 1;
             }
-
-            /*if (reservaASerExcluida == )
-            {
-
-            }
-            ContaRegistros -= 1;
-            this.QuartosEscolhidosArray[i]);
-            this.Nome[i]);
-            this.Email[i]);*/
+            
+            
+            QuartosEscolhidosArray = QuartosEscolhidosArray.Where(e => e != QuartosEscolhidosArray[reservaASerExcluida]).ToArray();
+            Nome = Nome.Where(e => e != Nome[reservaASerExcluida]).ToArray();
+            Email = Email.Where(e => e != Email[reservaASerExcluida]).ToArray();
         }
 
 

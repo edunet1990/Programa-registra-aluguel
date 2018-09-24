@@ -13,6 +13,7 @@ namespace RegistraQuartos
         {
             bool escolha = true;
             Registro R = new Registro();
+            int varExcluiReerva;
 
             // Console.Write("Quantos aluguéis serão registrados? ");
             // R.N = int.Parse(Console.ReadLine());
@@ -28,12 +29,18 @@ namespace RegistraQuartos
 
             while (escolha)
             {
+                
+                Console.WriteLine("............................");
+                Console.WriteLine("");
                 Console.WriteLine("1 - Registrar um Quarto");
                 Console.WriteLine("2 - Quartos Disponíveis");
                 Console.WriteLine("3 - Quartos Reservados");
                 Console.WriteLine("4 - Reservas Registradas");
                 Console.WriteLine("5 - Excluir Reserva");
                 Console.WriteLine("6 - Sair");
+                Console.WriteLine("");
+                Console.WriteLine("............................");
+                
 
                 R.N = int.Parse(Console.ReadLine());
 
@@ -57,6 +64,30 @@ namespace RegistraQuartos
                     case 4:
                         R.ReservasRegistradas();
 
+                        break;
+
+                    case 5:
+                        int iq = 1;
+                        
+                        for (int i = 0; i < R.ContaRegistros; i++)
+                        {
+
+
+
+                            Console.WriteLine("Dados da " + iq + "° reserva");
+                            Console.WriteLine("Quarto: " + R.QuartosEscolhidosArray[i]);
+                            Console.WriteLine("Nome: " + R.Nome[i]);
+                            Console.WriteLine("Email: " + R.Email[i]);
+
+                            Console.WriteLine("");
+                            ++iq;
+                        }
+
+
+                        Console.Write("Qual reserva deseja excluir? ");
+                        varExcluiReerva = int.Parse(Console.ReadLine());
+                        --varExcluiReerva; //para se igualar aos elementos do array ex: se digitou 1 o elemento correspondente no array é 0
+                        R.ExcluirReserva(varExcluiReerva);
                         break;
 
                     case 6:
